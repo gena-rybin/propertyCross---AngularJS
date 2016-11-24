@@ -1,7 +1,23 @@
 <div>
-    main page
 
-    <button ng-click="functionGoToResultPage()">rez</button>
+    <form>
+        <div class="form-group">
+            <label for="inpSearch">
+                Use the form below to search for houses to buy. You can search by place-name, postcode, or click 'My location', to search in your current location!:
+                <input type="text" id="inpSearch" ng-model="inpName" ng-change="functionFindByName()" class="form-control input-sm"/>
+            </label>
+            <button ng-click="functionGoToResultPage()" class="btn btn-success" >go</button>
+        </div>
+    </form>
+
+    <div>
+        <p>Recent searches:</p>
+        <div id="searches">
+
+        </div>
+    </div>
+
+
 
 </div>
 

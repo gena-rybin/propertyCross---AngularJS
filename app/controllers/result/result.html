@@ -1,5 +1,22 @@
 
 <div>
-    result page
+    <h2 class="text-center">{{shownResult}} of {{totalResults}} matches</h2>
+
+    <div class="container">
+        <div ng-repeat="result in results">
+            <div class="clearfix row">
+                <p>{{result.price_currency}}{{result.price}}</p>
+                <p>adress: {{result.title}}</p>
+                <p>brief: {{result.summary}}</p>
+                <span>
+                        <img ng-src="{{result.img_url}}" alt="house photo" style="height:70px" class="pull-right img-rounded" >
+                </span>
+            </div>
+        </div>
+
+    </div>
+
+    <button ng-click="functionGoToMainPage()" class="btn btn-success">back to main</button>
+
 
 </div>
