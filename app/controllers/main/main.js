@@ -4,7 +4,7 @@ app.config(function($stateProvider) {
     $stateProvider
         .state("main",{
             url: "/",
-            controller: "phoneBookCtrl",
+            controller: "mainCtrl",
             templateUrl: "app/controllers/main/main.html"
         })
 });

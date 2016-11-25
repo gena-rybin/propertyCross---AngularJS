@@ -1,6 +1,7 @@
 'use strict';
 
 app.controller('resultCtrl', function ($scope,
+                                       $rootScope,
                                        $state,
                                        localStorageService) {
 
@@ -13,14 +14,12 @@ app.controller('resultCtrl', function ($scope,
         $scope.results = response.listings;
         $scope.totalResults = response.total_results;
         $scope.shownResult = response.listings.length;
-        console.log(request);
-        console.log($scope.results);
+
+
+        // console.log(request);
+        //console.log($scope.detail);
     });
 
 
-    $scope.functionGoToMainPage = functionGoToMainPage;
-    function functionGoToMainPage () {
-        $state.go('main');
-    }
 
 });

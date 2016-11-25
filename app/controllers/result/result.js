@@ -3,7 +3,7 @@
 app.config(function($stateProvider) {
     $stateProvider
         .state("result",{
-            url: "/",
+            url: "/search-result",
             controller: "resultCtrl",
             templateUrl: "app/controllers/result/result.html"
         })

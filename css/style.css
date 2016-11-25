@@ -1,0 +1,10 @@
+.left{
+    margin: 4px;
+}
+.right{
+    margin-top:4px;
+}
+#fullDataPage,
+#resultPage{
+    padding-bottom: 70px;
+}
