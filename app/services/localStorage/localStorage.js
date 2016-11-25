@@ -1,6 +1,7 @@
 'use strict';
 
 app.service('localStorageService', function($q, $http) {
+
     var key = "task09LS"; // the name of our localStorage
     var data;
     return {
@@ -15,7 +16,8 @@ app.service('localStorageService', function($q, $http) {
             });
             this.write(data);
         },
-        getList: function() {
+        getList: function(page, location) {
+            var link = 'http://api.nestoria.co.uk/api?country=uk&pretty=1&action=search_listings&encoding=json&listing_type=buy&page=';
             var self = this;
             var deferred = $q.defer();
             var obj = JSON.parse(localStorage.getItem(key));
@@ -23,7 +25,11 @@ app.service('localStorageService', function($q, $http) {
                 data = obj;
                 deferred.resolve(obj);
             } else {
-                $http.get('http://api.nestoria.co.uk/api?action=echo&encoding=json&foo=bar').then(function (response) {
+                $http({
+                    method: 'GET',
+                    //url: link+page+'&place_name='+location
+                    url: link+page+'&place_name='+location
+                }).then(function (response) {
                     // this callback will be called asynchronously
                     // when the response is available
                     data = response;

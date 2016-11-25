@@ -7,7 +7,7 @@ app.controller('fullDataCtrl', function ($scope,
                                          $stateParams) {
 
     $scope.item = $stateParams.item;
-    console.log($scope.item);
+   // console.log($scope.item.lister_url);
 
     localStorageService.getList().then(function(res){
         $scope.detail = res.request.response;

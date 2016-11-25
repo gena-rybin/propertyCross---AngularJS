@@ -8,7 +8,8 @@ app.controller('resultCtrl', function ($scope,
     var request={};
     var response={};
 
-    localStorageService.getList().then(function(res){
+
+    localStorageService.getList(2, "London").then(function(res){
         request = res;
         response = request.response;
         $scope.results = response.listings;
@@ -16,7 +17,7 @@ app.controller('resultCtrl', function ($scope,
         $scope.shownResult = response.listings.length;
 
 
-        // console.log(request);
+        console.log(request);
         //console.log($scope.detail);
     });
 
