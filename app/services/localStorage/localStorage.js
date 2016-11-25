@@ -20,11 +20,6 @@ app.service('localStorageService', function($q, $http) {
             var link = 'http://api.nestoria.co.uk/api?country=uk&pretty=1&action=search_listings&encoding=json&listing_type=buy&page=';
             var self = this;
             var deferred = $q.defer();
-            var obj = JSON.parse(localStorage.getItem(key));
-            if(obj){
-                data = obj;
-                deferred.resolve(obj);
-            } else {
                 $http({
                     method: 'GET',
                     //url: link+page+'&place_name='+location
@@ -40,7 +35,6 @@ app.service('localStorageService', function($q, $http) {
                     // or server returns response with an error status.
                     deferred.reject(response)
                 });
-            }
             return deferred.promise;
         },
         clear: function() {
