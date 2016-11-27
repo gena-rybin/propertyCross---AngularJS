@@ -6,7 +6,7 @@ app.controller('mainCtrl', function ($scope,
                                         localStorageService) {
 
     $scope.clearLS = localStorageService.clear;
-
+    $scope.history = localStorageService.getHistory();
 
     $scope.functionSearch = functionSearch;
     function functionSearch () {

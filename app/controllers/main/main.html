@@ -8,14 +8,15 @@
                 <input type="text" id="inpSearch" ng-model="inpName" ng-change="functionFindByName()" class="form-control input-sm"/>
             </label>
             <button ng-click="functionSearch()" class="btn btn-info" >go</button>
-            <button ng-click="clearLS()" class="btn btn-warning" >clear searches</button>
+            <button ng-click="clearLS()" class="btn btn-warning" >clear history</button>
         </div>
     </form>
 
     <div>
         <p>Recent searches:</p>
-        <div id="searches">
+        <div id="searches" ng-repeat="item in history">
 
+            <span>{{item}}</span>
         </div>
     </div>
 
