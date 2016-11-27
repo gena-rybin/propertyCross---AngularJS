@@ -7,6 +7,12 @@ app.controller('mainCtrl', function ($scope,
 
 
 
+    $scope.functionSearch = functionSearch;
+    function functionSearch () {
+        console.log($scope.inpName);
+        $rootScope.functionGoToResultPage();
+    }
+
     $rootScope.functionGoToMainPage = functionGoToMainPage;
     function functionGoToMainPage () {
         $state.go('main');
@@ -14,7 +20,7 @@ app.controller('mainCtrl', function ($scope,
 
     $rootScope.functionGoToResultPage = functionGoToResultPage;
     function functionGoToResultPage () {
-        $state.go('result');
+        $state.go('result', {item: $scope.inpName});
     }
 
     $rootScope.functionGoToFullDataPage = functionGoToFullDataPage;

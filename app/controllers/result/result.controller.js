@@ -3,16 +3,22 @@
 app.controller('resultCtrl', function ($scope,
                                        $rootScope,
                                        $state,
-                                       localStorageService) {
+                                       localStorageService,
+                                       $stateParams) {
+
 
     var request={};
     var response={};
+    var inp = $scope.inpName;
+    $scope.locationFromUser = $stateParams.item;
+    $scope.pageCounter = 1;
 
-    console.log(localStorageService.getList(2, "London"));
+    //console.log(localStorageService.getList(2, "London"));
 
-    localStorageService.getList(2, "London").then(function(res){
+    localStorageService.getList($scope.pageCounter, $scope.locationFromUser).then(function(res){
          request = res.data;
          response = request.response;
+        $scope.locationSimilar = response.locations["0"].title;
         $scope.results = response.listings;
         $scope.totalResults = response.total_results;
         $scope.shownResult = response.listings.length;

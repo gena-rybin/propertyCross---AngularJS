@@ -5,6 +5,7 @@ app.config(function($stateProvider) {
         .state("main",{
             url: "/",
             controller: "mainCtrl",
-            templateUrl: "app/controllers/main/main.html"
+            templateUrl: "app/controllers/main/main.html",
+            params: {item: null}
         })
 });

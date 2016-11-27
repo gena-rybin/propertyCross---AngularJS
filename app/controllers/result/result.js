@@ -5,6 +5,7 @@ app.config(function($stateProvider) {
         .state("result",{
             url: "/search-result",
             controller: "resultCtrl",
-            templateUrl: "app/controllers/result/result.html"
+            templateUrl: "app/controllers/result/result.html",
+            params: {item: null}
         })
 });
