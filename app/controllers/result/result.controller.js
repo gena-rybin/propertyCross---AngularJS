@@ -23,9 +23,9 @@ app.controller('resultCtrl', function ($scope,
         $scope.totalResults = response.total_results;
         $scope.shownResult = response.listings.length;
 
-
         console.log(response);
         //console.log($scope.detail);
+        localStorageService.update($scope.locationFromUser, $scope.totalResults);
     });
 
 

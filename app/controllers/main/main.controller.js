@@ -5,11 +5,13 @@ app.controller('mainCtrl', function ($scope,
                                         $state,
                                         localStorageService) {
 
+    $scope.clearLS = localStorageService.clear;
 
 
     $scope.functionSearch = functionSearch;
     function functionSearch () {
         console.log($scope.inpName);
+
         $rootScope.functionGoToResultPage();
     }
 

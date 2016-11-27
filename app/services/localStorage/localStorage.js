@@ -8,17 +8,20 @@ app.service('localStorageService', function($q, $http) {
         write: function(value) {
             localStorage.setItem(key, angular.toJson(value)); //JSON.stringify
         },
-        update: function(value) {
-            data.forEach(function(item) {
-                if(item.general.avatar === value.general.avatar){
-                    return item = value;
-                }
-            });
+        update: function(location, results) {
+            var obj = JSON.parse(localStorage.getItem(key));
+            if(obj){
+                data = obj;
+                //deferred.resolve(obj);
+            } else {
+                data = [];
+            }
+            data.push({});
+            data[(data.length) - 1][location] = results;
             this.write(data);
         },
         getList: function(page, location) {
             var link = 'http://api.nestoria.co.uk/api?country=uk&pretty=1&action=search_listings&encoding=json&listing_type=buy&page=';
-            var self = this;
             var deferred = $q.defer();
                 $http({
                     method: 'GET',
@@ -27,8 +30,6 @@ app.service('localStorageService', function($q, $http) {
                 }).then(function (response) {
                     // this callback will be called asynchronously
                     // when the response is available
-                    data = response;
-                    self.write(response);
                     deferred.resolve(response);
                 }).catch(function (response) {
                     // called asynchronously if an error occurs
