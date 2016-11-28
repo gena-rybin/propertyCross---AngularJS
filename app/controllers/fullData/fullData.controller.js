@@ -10,7 +10,7 @@ app.controller('fullDataCtrl', function ($scope,
    // console.log($scope.item.lister_url);
 
     localStorageService.getList().then(function(res){
-        $scope.detail = res.request.response;
+      //  $scope.detail = res.request.response;
         // $scope.totalResults = response.total_results;
         // $scope.shownResult = response.listings.length;
         //console.log($scope.detail);

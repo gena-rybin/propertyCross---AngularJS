@@ -1,17 +1,34 @@
 'use strict';
 
 app.controller('mainCtrl', function ($scope,
-                                     $rootScope,
+                                     $rootScope, $document,  $window,
                                         $state,
                                         localStorageService) {
 
     $scope.clearLS = localStorageService.clear;
     $scope.history = localStorageService.getHistory();
 
+    $scope.functionNewSearch = functionNewSearch;
+    function functionNewSearch (location) {
+        $scope.inpName = location;
+        $rootScope.functionGoToResultPage();
+    }
+
+
     $scope.functionSearch = functionSearch;
     function functionSearch () {
         console.log($scope.inpName);
+        //=================
+        if ($scope.inpName) {
+            localStorageService.getList(1, $scope.inpName).then(function(res){
+                //localStorageService.update($scope.locationFromUser, $scope.totalResults);
+                if (res.data.response.application_response_code === '200') {
+                    $scope.inpName = 'err';
+                }
+            });
+        }
 
+        //===================
         $rootScope.functionGoToResultPage();
     }
 

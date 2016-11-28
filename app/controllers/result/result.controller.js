@@ -1,7 +1,7 @@
 'use strict';
 
 app.controller('resultCtrl', function ($scope,
-                                       $rootScope,
+                                       $rootScope, $document,  $window,
                                        $state,
                                        localStorageService,
                                        $stateParams) {
@@ -18,14 +18,24 @@ app.controller('resultCtrl', function ($scope,
         localStorageService.getList($scope.pageCounter, $scope.locationFromUser).then(function(res){
             request = res.data;
             response = request.response;
-            $scope.locationSimilar = response.locations["0"].title;
+            if (response.application_response_code === '200') {
+               // $document.find("#inpSearch").setAttribute('placeholder', 'this location doesnt exist!');
+                $rootScope.functionGoToMainPage();
+               // return;
+            }
+            if (response.locations["0"]) {
+                $scope.locationSimilar = response.locations["0"].title;
+            }
             $scope.results = response.listings;
             $scope.totalResults = response.total_results;
             $scope.shownResult = response.listings.length;
+            localStorageService.update($scope.locationFromUser,
+                                        $scope.locationSimilar,
+                                        $scope.totalResults);
 
             console.log(response);
             //console.log($scope.detail);
-            localStorageService.update($scope.locationFromUser, $scope.totalResults);
+
         });
 
     }
