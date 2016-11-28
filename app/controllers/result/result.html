@@ -23,7 +23,7 @@
     <nav class="navbar navbar-default navbar-fixed-bottom">
         <div class="container">
             <button ng-click="functionGoToMainPage()" class="btn btn-info">back to main search</button>
-            <button ng-click="functionAddResultsToPage()" class="btn btn-success">load more</button>
+            <button ng-click="functionAddResultsToPage()" class="btn btn-success" ng-show="restResults">load more</button>
         </div>
     </nav>
 

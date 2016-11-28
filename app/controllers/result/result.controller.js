@@ -13,6 +13,9 @@ app.controller('resultCtrl', function ($scope,
     $scope.locationFromUser = $stateParams.item;
     $scope.pageCounter = 1;
 
+
+
+
     load($scope.pageCounter);
     //console.log(localStorageService.getList(2, "London"));
     function load (pages) {
@@ -36,7 +39,13 @@ app.controller('resultCtrl', function ($scope,
                                             $scope.totalResults);
 
                 console.log(request);
-                //console.log($scope.detail);
+
+                // button 'load more'
+                if (($scope.totalResults - $scope.shownResult) < 20) {
+                    $scope.restResults = false;
+                } else {
+                    $scope.restResults = true;
+                }
             });
         }
 
@@ -46,9 +55,6 @@ app.controller('resultCtrl', function ($scope,
     $scope.functionAddResultsToPage = functionAddResultsToPage;
     function functionAddResultsToPage() {
         $scope.pageCounter++;
-        console.log($scope.pageCounter);
-        //load($scope.pageCounter);
-
         localStorageService.getList($scope.pageCounter, $scope.locationFromUser).then(function(res){
             request = res.data;
             response = request.response;
@@ -56,14 +62,10 @@ app.controller('resultCtrl', function ($scope,
             //     $scope.locationSimilar = response.locations["0"].title;
             // }
             $scope.results = $scope.results.concat(response.listings);
-            //$scope.totalResults = response.total_results;
             $scope.shownResult += response.listings.length;
-            // localStorageService.update($scope.locationFromUser,
-            //     $scope.locationSimilar,
-            //     $scope.totalResults);
-console.log(45);
-            console.log(response);
-            //console.log($scope.detail);
+            if (($scope.totalResults - $scope.shownResult) < 20) {
+                $scope.restResults = false;
+            }
         });
     }
 
