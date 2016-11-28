@@ -23,6 +23,16 @@
         <div class="container">
             <button ng-click="functionGoToMainPage()" class="btn btn-info">back to main search</button>
             <button ng-click="functionGoToResultPage()" class="btn btn-success">back to results</button>
+            <button ng-click="functionGoToFavesPage()" class="btn btn-warning">Faves</button>
+            <div class="pull-right">
+                <button ng-click="functionAddResultsToPage()" class="btn btn-warning" ng-show="favourite">
+                    Faves <strong>+</strong>
+                </button>
+                <button ng-click="functionAddResultsToPage()" class="btn btn-danger" ng-show="favourite">
+                    Faves <strong>-</strong>
+                </button>
+            </div>
+
         </div>
     </nav>
 

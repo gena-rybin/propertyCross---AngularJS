@@ -54,5 +54,9 @@ app.controller('mainCtrl', function ($scope,
         $state.go('fullData', {item: result});
     }
 
+    $rootScope.functionGoToFavesPage = functionGoToFavesPage;
+    function functionGoToFavesPage () {
+        $state.go('favourite');
+    }
 
 });
