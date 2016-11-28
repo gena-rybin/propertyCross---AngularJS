@@ -20,7 +20,7 @@ app.service('localStorageService', function($q, $http) {
             data[0].userInput = userInput;
             data[0].town = town;
             data[0].results = results;
-            //data.length = 5;
+            data.length = 5;
             this.write(data);
         },
         getHistory: function () {

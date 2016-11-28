@@ -5,8 +5,15 @@ app.controller('mainCtrl', function ($scope,
                                         $state,
                                         localStorageService) {
 
-    $scope.clearLS = localStorageService.clear;
+    //$scope.data={visible : true};
+    $scope.functionClearLS = functionClearLS;
+    function functionClearLS() {
+        localStorageService.clear();
+    }
+
     $scope.history = localStorageService.getHistory();
+
+
 
     $scope.functionNewSearch = functionNewSearch;
     function functionNewSearch (location) {

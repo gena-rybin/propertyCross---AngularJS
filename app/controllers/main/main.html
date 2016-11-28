@@ -13,7 +13,7 @@
             </div>
             <div id="controls">
                 <button ng-click="functionSearch()" class="btn btn-info" >go</button>
-                <button ng-click="clearLS()" class="btn btn-warning" >clear history</button>
+                <button ng-click="functionClearLS()" class="btn btn-warning" >clear history</button>
 
             </div>
         </div>
@@ -21,7 +21,7 @@
 
     <div>
         <p>Recent searches:</p>
-        <div id="searches" ng-repeat="item in history" ng-click="functionNewSearch(item.name)">
+        <div id="searches" ng-repeat="item in history track by $index" ng-click="functionNewSearch(item.userInput)">
             <p>
                 Search#{{$index + 1}}: <strong><span ng-bind="item.userInput"></span></strong> as <em><span ng-bind="item.town"></span></em>, found (<span ng-bind="item.results"></span>)
             </p>
