@@ -18,11 +18,17 @@ app.service('favouritesService', function($q, $http) {
             }
             data.push(result);
             this.write(data);
+            console.log('added');
         },
         remove: function(result) {
             data = this.get();
-
-            console.log('ready to remove');
+            data.forEach(function(item, i) {
+                if(item.img_url === result.img_url){
+                    data.splice(i, 1);
+                }
+            });
+            this.write(data);
+            console.log('removed');
         },
         exist: function(result) {
             data = this.get();

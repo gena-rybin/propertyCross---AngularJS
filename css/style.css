@@ -8,3 +8,14 @@
 #resultPage{
     padding-bottom: 70px;
 }
+#inpSearch{
+    margin-bottom: 20px;
+}
+#infoCover{
+    position: relative;
+}
+#infoText{
+    position: absolute;
+    top: -30px;
+    left: 5px;
+}

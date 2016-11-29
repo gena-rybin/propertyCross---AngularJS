@@ -2,19 +2,29 @@
 
 app.controller('mainCtrl', function ($scope,
                                      $rootScope, $document,  $window,
-                                    $state,
-                                    localStorageService,
-                                    favouritesService) {
+                                     $state,
+                                     localStorageService,
+                                     favouritesService,
+                                     $stateParams) {
 
-    //$scope.data={visible : true};
-    $scope.functionClearLS = functionClearLS;
-    function functionClearLS() {
+
+    $scope.functionClearSearches = functionClearSearches;
+    function functionClearSearches() {
         localStorageService.clear();
+        $scope.history = [];
     }
 
+    $scope.functionClearErr = functionClearErr;
+    function functionClearErr() {
+        $scope.errorMessage = '';
+        $scope.inpName = '';
+    }
+
+
+    $scope.inp = $scope.inpName;
     $scope.history = localStorageService.getHistory();
 
-
+    //$scope.errorMessage = $stateParams.item;
 
     $scope.functionNewSearch = functionNewSearch;
     function functionNewSearch (location) {
@@ -30,19 +40,23 @@ app.controller('mainCtrl', function ($scope,
         if ($scope.inpName) {
             localStorageService.getList(1, $scope.inpName).then(function(res){
                 //localStorageService.update($scope.locationFromUser, $scope.totalResults);
-                if (res.data.response.application_response_code === '200') {
-                    $scope.inpName = 'err';
+                if (res.data.response.listings.length === 0) {
+                    //$scope.inpName = res.data.response.application_response_text;
+                    $scope.errorMessage = res.data.response.application_response_text;
+                    return;
+                    console.log('doesn"t have to see!');
                 }
+
+                $rootScope.functionGoToResultPage();
             });
         }
 
         //===================
-        $rootScope.functionGoToResultPage();
     }
 
     $rootScope.functionGoToMainPage = functionGoToMainPage;
-    function functionGoToMainPage () {
-        $state.go('main');
+    function functionGoToMainPage (err) {
+        $state.go('main', {item: err});
     }
 
     $rootScope.functionGoToResultPage = functionGoToResultPage;

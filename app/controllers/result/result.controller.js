@@ -18,16 +18,14 @@ app.controller('resultCtrl', function ($scope,
 
 
     load($scope.pageCounter);
-    //console.log(localStorageService.getList(2, "London"));
     function load (pages) {
         if ($scope.locationFromUser) {
             localStorageService.getList(pages, $scope.locationFromUser).then(function(res){
                 request = res.data;
                 response = request.response;
+                console.log(response);
                 if (response.application_response_code === '200') {
-                    // $document.find("#inpSearch").setAttribute('placeholder', 'this location doesnt exist!');
-                    $rootScope.functionGoToMainPage();
-                    // return;
+                    $rootScope.functionGoToMainPage(response.application_response_text);
                 }
                 if (response.locations["0"]) {
                     $scope.locationSimilar = response.locations["0"].title;
@@ -38,8 +36,6 @@ app.controller('resultCtrl', function ($scope,
                 localStorageService.update($scope.locationFromUser,
                                             $scope.locationSimilar,
                                             $scope.totalResults);
-
-                console.log(request);
 
                 // button 'load more'
                 if (($scope.totalResults - $scope.shownResult) < 20) {

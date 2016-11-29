@@ -6,6 +6,6 @@ app.config(function($stateProvider) {
             url: "/search-result",
             controller: "resultCtrl",
             templateUrl: "app/controllers/result/result.html",
-            params: {item: null}
+            params: {item:  null}
         })
 });

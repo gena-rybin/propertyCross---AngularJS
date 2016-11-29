@@ -5,17 +5,24 @@
         <div class="form-group">
             <label for="inpSearch">
                 Use the form below to search for houses to buy. You can search by place-name, postcode, or click 'My location', to search in your current location!:
-                <input type="text" id="inpSearch" ng-model="inpName" ng-change="functionFindByName()" class="form-control input-sm"/>
+                <input type="text"
+                       id="inpSearch"
+                       ng-model="inpName"
+                       ng-click="functionClearErr()"
+                       class="form-control input-sm"
+                />
             </label>
-            <div id="infoStatus">
-                <!--<p ng-if="errorMessage">{{errorMessage}}</p>-->
+            <div id="infoCover">
+                <p id="infoText" ng-if="errorMessage" class="text-danger">
+                    <strong><em>{{inpName}}</em>  -  {{errorMessage}}</strong>
+                </p>
 
             </div>
             <div id="controls">
                 <button ng-click="functionSearch()" class="btn btn-info" >go</button>
                 <button ng-click="functionGoToFavesPage()" class="btn btn-warning">Faves</button>
                 <div class="pull-right">
-                    <button ng-click="functionClearLS()" class="btn btn-danger" >clear history</button>
+                    <button ng-click="functionClearSearches()" class="btn btn-danger" >clear history</button>
                 </div>
             </div>
         </div>

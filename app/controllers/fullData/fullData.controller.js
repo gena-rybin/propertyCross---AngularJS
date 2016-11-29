@@ -40,16 +40,12 @@ app.controller('fullDataCtrl', function ($scope,
         if ($scope.favesAction === '+') {
             favouritesService.update(result);
 
-            console.log('added');
-
         }
         if ($scope.favesAction === '-') {
             favouritesService.remove(result);
 
-            console.log('removed');
-
         }
-
+        functionCheckInFaves($scope.result);
     }
 
 
