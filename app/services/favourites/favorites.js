@@ -21,16 +21,15 @@ app.service('favouritesService', function($q, $http) {
         },
         remove: function(result) {
             data = this.get();
+
             console.log('ready to remove');
         },
         exist: function(result) {
             data = this.get();
-            if (data.length > 0) return false;
-            var resp = data.some(function(item) {
+            if (data.length === null) return false;
+            return data.some(function(item) {
                 return item.img_url === result.img_url;
             });
-            console.log(resp);
-            return resp;
         },
         get: function () {
             var obj = JSON.parse(localStorage.getItem(key));

@@ -29,7 +29,7 @@ app.controller('fullDataCtrl', function ($scope,
             console.log("exist");
         } else {
             $scope.favesAction = '+';
-            console.log("DON'T exist");
+            console.log("DOESN'T exist");
         }
     }
 
