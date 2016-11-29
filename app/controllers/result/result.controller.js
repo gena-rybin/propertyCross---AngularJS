@@ -4,6 +4,7 @@ app.controller('resultCtrl', function ($scope,
                                        $rootScope, $document,  $window,
                                        $state,
                                        localStorageService,
+                                       favouritesService,
                                        $stateParams) {
 
     $scope.results = [];

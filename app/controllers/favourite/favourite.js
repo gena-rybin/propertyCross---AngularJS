@@ -5,7 +5,6 @@ app.config(function($stateProvider) {
         .state("favourite",{
             url: "/favourite",
             controller: "favouriteCtrl",
-            templateUrl: "app/controllers/favourite/favourite.html",
-            params: {item: null}
+            templateUrl: "app/controllers/favourite/favourite.html"
         })
 });

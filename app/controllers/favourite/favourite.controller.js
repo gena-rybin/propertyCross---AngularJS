@@ -3,10 +3,10 @@
 app.controller('favouriteCtrl', function ($scope,
                                          $rootScope,
                                          $state,
-                                         localStorageService,
+                                         favouritesService,
                                          $stateParams) {
 
-
+    $scope.results = favouritesService.get();
 
 
 });

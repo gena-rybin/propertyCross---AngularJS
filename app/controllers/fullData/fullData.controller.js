@@ -4,9 +4,10 @@ app.controller('fullDataCtrl', function ($scope,
                                          $rootScope,
                                          $state,
                                          localStorageService,
+                                         favouritesService,
                                          $stateParams) {
 
-    $scope.item = $stateParams.item;
+    $scope.result = $stateParams.item;
    // console.log($scope.item.lister_url);
 
     $scope.favourite = true;
@@ -17,6 +18,39 @@ app.controller('fullDataCtrl', function ($scope,
         // $scope.shownResult = response.listings.length;
         //console.log($scope.detail);
     });
+
+
+    functionCheckInFaves($scope.result);
+
+    $scope.functionCheckInFaves = functionCheckInFaves;
+    function functionCheckInFaves(result) {
+        if (favouritesService.exist(result)) {
+            $scope.favesAction = '-';
+            console.log("exist");
+        } else {
+            $scope.favesAction = '+';
+            console.log("DON'T exist");
+        }
+    }
+
+
+    $scope.functionMoveFaves = functionMoveFaves;
+    function functionMoveFaves(result) {
+        functionCheckInFaves($scope.result);
+        if ($scope.favesAction === '+') {
+            favouritesService.update(result);
+
+            console.log('added');
+
+        }
+        if ($scope.favesAction === '-') {
+            favouritesService.remove(result);
+
+            console.log('removed');
+
+        }
+
+    }
 
 
 

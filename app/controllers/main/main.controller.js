@@ -2,8 +2,9 @@
 
 app.controller('mainCtrl', function ($scope,
                                      $rootScope, $document,  $window,
-                                        $state,
-                                        localStorageService) {
+                                    $state,
+                                    localStorageService,
+                                    favouritesService) {
 
     //$scope.data={visible : true};
     $scope.functionClearLS = functionClearLS;

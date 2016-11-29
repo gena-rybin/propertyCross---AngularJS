@@ -2,7 +2,7 @@
 
 app.service('localStorageService', function($q, $http) {
 
-    var key = "task09LS"; // the name of our localStorage
+    var key = "#09searches"; // the name of our localStorage
     var data;
     return {
         write: function(value) {
@@ -47,7 +47,7 @@ app.service('localStorageService', function($q, $http) {
             return deferred.promise;
         },
         clear: function() {
-            localStorage.clear();
+            delete localStorage[key];
             //location.reload();
             //return false;
         }

@@ -1,20 +1,20 @@
 
 <div id="fullDataPage">
 
-    <h4 class="text-center">{{item.price_formatted}}</h4>
+    <h4 class="text-center">{{result.price_formatted}}</h4>
     <div class="clearfix row" >
             <div class="left pull-left">
-                <img ng-src="{{item.img_url}}" alt="house photo" class="img-rounded">
+                <img ng-src="{{result.img_url}}" alt="house photo" class="img-rounded">
             </div>
             <div class="right">
 
-                <span>adress: <em>{{item.title}}</em></span><br><br>
-                <span>brief: {{item.summary}}</span><br><br>
-                <span>Listing type: <kbd>{{item.listing_type}}</kbd>, price is {{item.price_type}}</span><br>
+                <span>adress: <em>{{result.title}}</em></span><br><br>
+                <span>brief: {{result.summary}}</span><br><br>
+                <span>Listing type: <kbd>{{result.listing_type}}</kbd>, price is {{result.price_type}}</span><br>
                 <br>
                 <br>
-                <span>{{item.bathroom_number}} bathroom, {{item.bedroom_number}} bedroom, {{item.car_spaces}} car spaces</span><br>
-                <span>{{item.floor}} floor</span><br>
+                <span>{{result.bathroom_number}} bathroom, {{result.bedroom_number}} bedroom, {{result.car_spaces}} car spaces</span><br>
+                <span>{{result.floor}} floor</span><br>
             </div>
 
         </div>
@@ -25,11 +25,8 @@
             <button ng-click="functionGoToResultPage()" class="btn btn-success">back to results</button>
             <button ng-click="functionGoToFavesPage()" class="btn btn-warning">Faves</button>
             <div class="pull-right">
-                <button ng-click="functionAddResultsToPage()" class="btn btn-warning" ng-show="favourite">
-                    Faves <strong>+</strong>
-                </button>
-                <button ng-click="functionAddResultsToPage()" class="btn btn-danger" ng-show="favourite">
-                    Faves <strong>-</strong>
+                <button ng-click="functionMoveFaves(result)" class="btn btn-warning">
+                    <strong>{{favesAction}}</strong>
                 </button>
             </div>
 
