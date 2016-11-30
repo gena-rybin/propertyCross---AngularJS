@@ -15,7 +15,7 @@ app.controller('resultCtrl', function ($scope,
     $scope.pageCounter = 1;
 
 
-
+console.log($scope.results);
 
     load($scope.pageCounter);
     function load (pages) {
@@ -66,7 +66,7 @@ app.controller('resultCtrl', function ($scope,
         });
     }
 
-
+    console.log($scope.results);
 
 
 });

@@ -4,21 +4,20 @@ app.controller('fullDataCtrl', function ($scope,
                                          $rootScope,
                                          $state,
                                          localStorageService,
+                                         sessionStorageService,
                                          favouritesService,
                                          $stateParams) {
 
     $scope.result = $stateParams.item;
-   // console.log($scope.item.lister_url);
 
+    if ($scope.result === null) {
+        $scope.result = sessionStorageService.get();
+
+        console.log($scope.result);
+    };
     $scope.favourite = true;
 
-    localStorageService.getList().then(function(res){
-      //  $scope.detail = res.request.response;
-        // $scope.totalResults = response.total_results;
-        // $scope.shownResult = response.listings.length;
-        //console.log($scope.detail);
-    });
-
+    sessionStorageService.update($scope.result);
 
     functionCheckInFaves($scope.result);
 
