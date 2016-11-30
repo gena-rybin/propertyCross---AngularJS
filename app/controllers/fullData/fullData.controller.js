@@ -8,16 +8,26 @@ app.controller('fullDataCtrl', function ($scope,
                                          favouritesService,
                                          $stateParams) {
 
+    var key = "#09fullInfo"; // the name of our sessionStorage
+    var arr = [];
     $scope.result = $stateParams.item;
 
-    if ($scope.result === null) {
-        $scope.result = sessionStorageService.get();
 
-        console.log($scope.result);
+    if ($scope.result === null && sessionStorageService.get(key) === null) {
+        $state.go('main');
     };
+
+    if ($scope.result === null) {
+        $scope.result = sessionStorageService.get(key)[0];
+    };
+
+
+    arr.push($scope.result);
+    sessionStorageService.update(arr, key);
+
+
     $scope.favourite = true;
 
-    sessionStorageService.update($scope.result);
 
     functionCheckInFaves($scope.result);
 

@@ -6,6 +6,8 @@ app.controller('favouriteCtrl', function ($scope,
                                          favouritesService,
                                          $stateParams) {
 
+    var key = "#09faves"; // the name of our sessionStorage
+
     $scope.results = favouritesService.get();
 
     $scope.functionClearFaves = functionClearFaves;

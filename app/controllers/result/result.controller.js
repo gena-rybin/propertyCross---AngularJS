@@ -4,18 +4,20 @@ app.controller('resultCtrl', function ($scope,
                                        $rootScope, $document,  $window,
                                        $state,
                                        localStorageService,
+                                       sessionStorageService,
                                        favouritesService,
                                        $stateParams) {
 
-    $scope.results = [];
+  //  $scope.results = [];
+
+    var key = "#09results"; // the name of our sessionStorage
+
     var request={};
     var response={};
-    var inp = $scope.inpName;
     $scope.locationFromUser = $stateParams.item;
     $scope.pageCounter = 1;
 
 
-console.log($scope.results);
 
     load($scope.pageCounter);
     function load (pages) {
@@ -23,7 +25,7 @@ console.log($scope.results);
             localStorageService.getList(pages, $scope.locationFromUser).then(function(res){
                 request = res.data;
                 response = request.response;
-                console.log(response);
+                // console.log(response);
                 if (response.application_response_code === '200') {
                     $rootScope.functionGoToMainPage(response.application_response_text);
                 }
@@ -37,12 +39,16 @@ console.log($scope.results);
                                             $scope.locationSimilar,
                                             $scope.totalResults);
 
+                sessionStorageService.update($scope.results, key);
+                console.log($scope.results);
+
                 // button 'load more'
                 if (($scope.totalResults - $scope.shownResult) < 20) {
                     $scope.restResults = false;
                 } else {
                     $scope.restResults = true;
                 }
+
             });
         }
 
@@ -66,7 +72,15 @@ console.log($scope.results);
         });
     }
 
-    console.log($scope.results);
 
+
+    if ($scope.results === null) {
+        $scope.results = sessionStorageService.get(key);
+    };
+
+    if ($scope.results === null && sessionStorageService.get(key) === null) {
+        $state.go('main');
+    };
+    console.log($scope.results);
 
 });

@@ -2,14 +2,14 @@
 
 app.service('sessionStorageService', function($q, $http) {
 
-    var key = "#09fullData"; // the name of our localStorage
     var data;
     return {
-        update: function(result) {
+
+        update: function(result, key) {
             data = result;
             sessionStorage.setItem(key, angular.toJson(data)); //JSON.stringify
         },
-        get: function () {
+        get: function (key) {
             data = JSON.parse(sessionStorage.getItem(key));
             return data;
         },
