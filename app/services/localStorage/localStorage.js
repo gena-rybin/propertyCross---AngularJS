@@ -9,13 +9,18 @@ app.service('localStorageService', function($q, $http) {
             localStorage.setItem(key, angular.toJson(value)); //JSON.stringify
         },
         update: function(userInput, town, results) {
-            var obj = JSON.parse(localStorage.getItem(key));
+            var obj = this.getHistory();
             if(obj){
                 data = obj;
                 //deferred.resolve(obj);
             } else {
                 data = [];
             }
+            data.forEach(function(item, i) {
+                if(item.userInput === userInput && item.town === town){
+                    data.splice(i, 1);
+                }
+            });
             data.unshift({});
             data[0].userInput = userInput;
             data[0].town = town;
@@ -23,6 +28,10 @@ app.service('localStorageService', function($q, $http) {
             if (data.length > 5) {
                 data.length = 5;
             }
+
+
+
+
             this.write(data);
         },
         getHistory: function () {
@@ -52,36 +61,4 @@ app.service('localStorageService', function($q, $http) {
             //return false;
         }
     }
-})
-
-
-
-// app.service('localStorageService', localStorageService);
-//
-// function localStorageService(){
-//
-//     var ls = localStorage;
-//     var key = "task08LS"; // the name of our localStorage
-//
-//     return{
-//         write: function (data){
-//             ls.clear();
-//             var addData = JSON.stringify(data); //сериализуем его
-//             ls.setItem(key, addData); //запишем его в хранилище по ключу 'task03LS'
-//             $window.localStorage.setItem(key,data);
-//         }
-//
-//
-//     }
-//
-//     // checking if localstorage(=LS) is empty. LS has a priority.
-//     // var myLS = JSON.parse(localStorage.getItem(key));
-//     // if (myLS) {
-//     //     data = myLS;
-//     // }
-//     // console.log( myLS );
-//
-//
-//
-
-// }
+});
