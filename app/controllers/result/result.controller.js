@@ -22,34 +22,38 @@ app.controller('resultCtrl', function ($scope,
     load($scope.pageCounter);
     function load (pages) {
         if ($scope.locationFromUser) {
-            localStorageService.getList(pages, $scope.locationFromUser).then(function(res){
-                request = res.data;
-                response = request.response;
-                // console.log(response);
-                if (response.application_response_code === '200') {
-                    $rootScope.functionGoToMainPage(response.application_response_text);
-                }
-                if (response.locations["0"]) {
-                    $scope.locationSimilar = response.locations["0"].title;
-                }
-                $scope.results = response.listings;
-                $scope.totalResults = response.total_results;
-                $scope.shownResult = response.listings.length;
-                localStorageService.update($scope.locationFromUser,
-                                            $scope.locationSimilar,
-                                            $scope.totalResults);
+            localStorageService.getList(pages, $scope.locationFromUser)
+                .then(function(res){
+                    request = res.data;
+                    response = request.response;
+                    // console.log(response);
+                    if (response.application_response_code === '200') {
+                        $rootScope.functionGoToMainPage(response.application_response_text);
+                    }
+                    if (response.locations["0"]) {
+                        $scope.locationSimilar = response.locations["0"].title;
+                    }
+                    $scope.results = response.listings;
+                    $scope.totalResults = response.total_results;
+                    $scope.shownResult = response.listings.length;
+                    localStorageService.update($scope.locationFromUser,
+                                                $scope.locationSimilar,
+                                                $scope.totalResults);
 
-                sessionStorageService.update($scope.results, key);
-                console.log($scope.results);
+                    sessionStorageService.update($scope.results, key);
+                    console.log($scope.results);
 
-                // button 'load more'
-                if (($scope.totalResults - $scope.shownResult) < 20) {
-                    $scope.restResults = false;
-                } else {
-                    $scope.restResults = true;
-                }
+                    // button 'load more'
+                    if (($scope.totalResults - $scope.shownResult) < 20) {
+                        $scope.restResults = false;
+                    } else {
+                        $scope.restResults = true;
+                    }
 
-            });
+                }).then(null, function(error) {
+                    console.log(error);
+                    alert('sorry');
+                });
         }
 
     }
@@ -73,14 +77,17 @@ app.controller('resultCtrl', function ($scope,
     }
 
 
-
+    console.log($scope.results);
     if ($scope.results === null) {
+        console.log(111);
+        load($scope.pageCounter);
         $scope.results = sessionStorageService.get(key);
     };
 
     if ($scope.results === null && sessionStorageService.get(key) === null) {
+        console.log(222);
         $state.go('main');
     };
-    console.log($scope.results);
+   // console.log($scope.results);
 
 });
