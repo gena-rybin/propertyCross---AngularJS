@@ -1,7 +1,15 @@
 
 <div id="fullDataPage">
 
-    <h4 class="text-center">{{result.price_formatted}}</h4>
+    <h4 class="text-center">
+        {{result.price_formatted}}
+        <span class="pull-right">
+            <button ng-click="functionMoveFaves(result)" class="btn btn-warning">
+                <strong>{{favesAction}}</strong>
+            </button>
+        </span>
+    </h4>
+
     <div class="clearfix row" >
             <div class="left pull-left">
                 <img ng-src="{{result.img_url}}" alt="house photo" class="img-rounded">
@@ -19,18 +27,16 @@
 
         </div>
 
-    <nav class="navbar navbar-default navbar-fixed-bottom">
-        <div class="container">
-            <button ng-click="functionGoToMainPage()" class="btn btn-info">back to main search</button>
-            <button ng-click="functionGoToResultPage()" class="btn btn-success">back to results</button>
-            <button ng-click="functionGoToFavesPage()" class="btn btn-warning">Faves</button>
-            <div class="pull-right">
-                <button ng-click="functionMoveFaves(result)" class="btn btn-warning">
-                    <strong>{{favesAction}}</strong>
-                </button>
-            </div>
 
-        </div>
-    </nav>
+
+    <main-nav-bar></main-nav-bar>
+    <!--<nav class="navbar navbar-default navbar-fixed-bottom">-->
+        <!--<div class="container">-->
+            <!--<button ng-click="functionGoToMainPage()" class="btn btn-info">back to main search</button>-->
+            <!--<button ng-click="functionGoToResultPage()" class="btn btn-success">back to results</button>-->
+            <!--<button ng-click="functionGoToFavesPage()" class="btn btn-warning">Faves</button>-->
+
+        <!--</div>-->
+    <!--</nav>-->
 
 </div>

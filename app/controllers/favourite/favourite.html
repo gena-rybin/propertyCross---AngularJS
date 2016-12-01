@@ -1,7 +1,12 @@
 
 <div id="favouritePage">
 
-    <h4 class="text-center">Favourites</h4>
+    <h4 class="text-center">
+        Favourites
+        <span class="pull-right">
+            <button ng-click="functionClearFaves()" class="btn btn-danger" >clear favourites</button>
+        </span>
+    </h4>
 
     <div class="container">
         <div ng-repeat="result in results" ng-click="functionGoToFullDataPage(result)">
@@ -21,16 +26,17 @@
     </div>
 
 
-    <nav class="navbar navbar-default navbar-fixed-bottom">
-        <div class="container">
-            <button ng-click="functionGoToMainPage()" class="btn btn-info">back to main search</button>
-            <button ng-click="functionAddResultsToPage()" class="btn btn-success" ng-show="restResults">load more</button>
-            <div class="pull-right">
-                <button ng-click="functionClearFaves()" class="btn btn-danger" >clear favourites</button>
-            </div>
+    <main-nav-bar></main-nav-bar>
+    <!--<nav class="navbar navbar-default navbar-fixed-bottom">-->
+        <!--<div class="container">-->
+            <!--<button ng-click="functionGoToMainPage()" class="btn btn-info">back to main search</button>-->
+            <!--<button ng-click="functionAddResultsToPage()" class="btn btn-success" ng-show="restResults">load more</button>-->
+            <!--<div class="pull-right">-->
+                <!--<button ng-click="functionClearFaves()" class="btn btn-danger" >clear favourites</button>-->
+            <!--</div>-->
 
-        </div>
-    </nav>
+        <!--</div>-->
+    <!--</nav>-->
 
 
 
