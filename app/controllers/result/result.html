@@ -10,24 +10,24 @@
                     <img ng-src="{{result.img_url}}" alt="house photo" style="height:70px" class="img-rounded">
                 </div>
                 <div class="right">
-                    <span class="text-right text-info">{{result.price_formatted}}</span><br>
+                    <span class="text-right text-info" ng-bind="result.price_formatted"></span><br>
                     <span>adress: <em>{{result.title}}</em></span><br>
                     <span>brief: {{result.summary}}</span>
                 </div>
 
             </div>
         </div>
+        <button ng-click="functionAddResultsToPage()" class="btn btn-success" ng-show="restResults">
+            load more
+        </button>
 
     </div>
 
 
-    <main-nav-bar></main-nav-bar>
+    <main-nav-bar ng-controller="nav-bar-controller"></main-nav-bar>
     <!--<nav class="navbar navbar-default navbar-fixed-bottom">-->
         <!--<div class="container">-->
             <!--<button ng-click="functionGoToMainPage()" class="btn btn-info">back to main search</button>-->
-            <!--<button ng-click="functionAddResultsToPage()" class="btn btn-success" ng-show="restResults">-->
-                <!--load more-->
-            <!--</button>-->
 
             <!--<button ng-click="functionGoToFavesPage()" class="btn btn-warning">Faves</button>-->
         <!--</div>-->

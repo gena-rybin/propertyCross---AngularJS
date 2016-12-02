@@ -54,10 +54,10 @@ app.controller('mainCtrl', function ($scope,
         //===================
     }
 
-    $rootScope.functionGoToMainPage = functionGoToMainPage;
-    function functionGoToMainPage (err) {
-        $state.go('main', {item: err});
-    }
+    // $rootScope.functionGoToMainPage = functionGoToMainPage;
+    // function functionGoToMainPage (err) {
+    //     $state.go('main', {item: err});
+    // }
 
     $rootScope.functionGoToResultPage = functionGoToResultPage;
     function functionGoToResultPage () {
