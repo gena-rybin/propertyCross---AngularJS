@@ -16,5 +16,8 @@ app.controller('favouriteCtrl', function ($scope,
         $scope.results = [];
     }
 
+    $scope.functionShowFaves = function functionShowFaves(result) {
+        $state.go('fullData', {item: result});
+    }
 
 });

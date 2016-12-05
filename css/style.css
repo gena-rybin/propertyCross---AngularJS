@@ -5,7 +5,8 @@
     margin-top:4px;
 }
 #fullDataPage,
-#resultPage{
+#resultPage,
+#favouritePage{
     padding-bottom: 70px;
 }
 #inpSearch{

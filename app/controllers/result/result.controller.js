@@ -85,5 +85,8 @@ app.controller('resultCtrl', function ($scope,
         });
     }
 
+    $scope.functionShowFullData = function functionShowFullData(result) {
+        $state.go('fullData', {item: result});
+    }
 
 });

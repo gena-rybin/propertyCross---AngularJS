@@ -29,7 +29,7 @@ app.controller('mainCtrl', function ($scope,
     $scope.functionNewSearch = functionNewSearch;
     function functionNewSearch (location) {
         $scope.inpName = location;
-        $rootScope.functionGoToResultPage();
+        $state.go('result', {item: $scope.inpName});
     }
 
 
@@ -47,7 +47,7 @@ app.controller('mainCtrl', function ($scope,
                     console.log('doesn"t have to see!');
                 }
 
-                $rootScope.functionGoToResultPage();
+                $state.go('result', {item: $scope.inpName});
             });
         }
 
@@ -59,18 +59,18 @@ app.controller('mainCtrl', function ($scope,
     //     $state.go('main', {item: err});
     // }
 
-    $rootScope.functionGoToResultPage = functionGoToResultPage;
-    function functionGoToResultPage () {
-        $state.go('result', {item: $scope.inpName});
-    }
-
-    $rootScope.functionGoToFullDataPage = functionGoToFullDataPage;
-    function functionGoToFullDataPage (result) {
-        $state.go('fullData', {item: result});
-    }
-
-    $rootScope.functionGoToFavesPage = functionGoToFavesPage;
-    function functionGoToFavesPage () {
+    // $rootScope.functionGoToResultPage = functionGoToResultPage;
+    // function functionGoToResultPage () {
+    //     $state.go('result', {item: $scope.inpName});
+    // }
+    //
+    // $rootScope.functionGoToFullDataPage = functionGoToFullDataPage;
+    // function functionGoToFullDataPage (result) {
+    //     $state.go('fullData', {item: result});
+    // }
+    //
+    $scope.functionGoToFavesPage = functionGoToFavesPage;
+    function functionGoToFavesPage() {
         $state.go('favourite');
     }
 
