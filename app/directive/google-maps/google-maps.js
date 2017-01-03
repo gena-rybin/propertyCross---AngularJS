@@ -7,8 +7,8 @@ app.directive('myMap', function() {
 
         // map config
         var mapOptions = {
-            center: new google.maps.LatLng(50, 2),
-            zoom: 4,
+            center: new google.maps.LatLng(52, -1.7),
+            zoom: 6,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             scrollwheel: false
         };
@@ -50,9 +50,18 @@ app.directive('myMap', function() {
         // show the map and place some markers
         initMap();
 
-        setMarker(map, new google.maps.LatLng(51.508515, -0.125487), 'London', 'Just some content');
-        setMarker(map, new google.maps.LatLng(52.370216, 4.895168), 'Amsterdam', 'More content');
-        setMarker(map, new google.maps.LatLng(48.856614, 2.352222), 'Paris', 'Text here');
+        // add 'recent searches' to the map
+        for (var i=0; i<scope.history.length; i++) {
+            var town = scope.history[i].town;
+            setMarker(map,
+                    new google.maps.LatLng(scope.history[i].latitude,
+                                        scope.history[i].longitude),
+                    town);
+        }
+       console.log(' history =', scope.history.length);
+        // setMarker(map, new google.maps.LatLng(51.508515, -0.125487), 'London', 'Just some content');
+        // setMarker(map, new google.maps.LatLng(markH, markW), 'scope.history.town', 'More content');
+        // setMarker(map, new google.maps.LatLng(48.856614, 2.352222), 'Paris', 'Text here');
     };
 
     return {

@@ -50,7 +50,7 @@ app.controller('mainCtrl', function ($scope,
                 $state.go('result', {item: $scope.inpName});
             }).catch(function(error) {
                 console.log(error);
-                alert("Sorry, but site doesn't work! It's not your faut)");
+                alert("Sorry, but site doesn't work! It's not your fault)");
             });
         }
 
