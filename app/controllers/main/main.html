@@ -28,14 +28,26 @@
         </div>
     </form>
 
-    <div>
-        <p>Recent searches:</p>
-        <div id="searches" ng-repeat="item in history track by $index" ng-click="functionNewSearch(item.userInput)">
-            <p>
-                Search#{{$index + 1}}: <strong><span ng-bind="item.userInput"></span></strong> as <em><span ng-bind="item.town"></span></em>, found (<span ng-bind="item.results"></span>)
-            </p>
+    <div class="wrapper">
+        <div id="recent">
+            <p>Recent searches:</p>
+            <div id="searches" ng-repeat="item in history track by $index" ng-click="functionNewSearch(item.userInput)">
+                <p>
+                    Search#{{$index + 1}}: <strong><span ng-bind="item.userInput"></span></strong> as <em><span ng-bind="item.town"></span></em>, found (<span ng-bind="item.results"></span>)
+                </p>
+            </div>
         </div>
+
+
+        <div my-map=""></div>
+
     </div>
+
+    <!--<div id="map" >-->
+        <!--<script >src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAs0kHLAfvq9MX9hmyTXBymMKymn4dVyEQ&callback=initMap";</script>-->
+        <!--&lt;!&ndash;&lt;!&ndash;https://jsfiddle.net/Xeoncross/k5c2ndyL/&ndash;&gt;&ndash;&gt;-->
+
+    <!--</div>-->
 
 
 

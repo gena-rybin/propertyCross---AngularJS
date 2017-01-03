@@ -34,6 +34,8 @@ app.controller('resultCtrl', function ($scope,
 
 
     function load (pages) {
+        var latitudeSearch;
+        var longitudeSearch;
         if ($scope.locationFromUser) {
             localStorageService.getList(pages, $scope.locationFromUser)
                 .then(function(res){
@@ -48,9 +50,13 @@ app.controller('resultCtrl', function ($scope,
                     $scope.results = response.listings;
                     $scope.totalResults = response.total_results;
                     $scope.shownResult = response.listings.length;
+                    latitudeSearch =  response.locations["0"].center_lat;
+                    longitudeSearch = response.locations["0"].center_long;
                     localStorageService.update($scope.locationFromUser,
                                                 $scope.locationSimilar,
-                                                $scope.totalResults);
+                                                $scope.totalResults,
+                                                latitudeSearch,
+                                                longitudeSearch);
 
                     // button 'load more'
                     if (($scope.totalResults - $scope.shownResult) < 20) {
@@ -61,7 +67,7 @@ app.controller('resultCtrl', function ($scope,
 
                 }).catch(function(error) {
                     console.log(error);
-                    alert('sorry');
+                    alert("Sorry, but site doesn't work! It's not your faut)");
                 });
         }
 

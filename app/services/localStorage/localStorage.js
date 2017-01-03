@@ -8,7 +8,7 @@ app.service('localStorageService', function($q, $http) {
         write: function(value) {
             localStorage.setItem(key, angular.toJson(value)); //JSON.stringify
         },
-        update: function(userInput, town, results) {
+        update: function(userInput, town, results, latitude, longitude) {
             var obj = this.getHistory();
             if(obj){
                 data = obj;
@@ -25,12 +25,11 @@ app.service('localStorageService', function($q, $http) {
             data[0].userInput = userInput;
             data[0].town = town;
             data[0].results = results;
+            data[0].latitude = latitude;
+            data[0].longitude = longitude;
             if (data.length > 5) {
                 data.length = 5;
             }
-
-
-
 
             this.write(data);
         },

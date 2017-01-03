@@ -59,4 +59,10 @@ app.controller('fullDataCtrl', function ($scope,
 
 
 
+
+  //  <script async defer
+  //   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAs0kHLAfvq9MX9hmyTXBymMKymn4dVyEQ&callback=initMap">
+  //       </script>
+
+
 });

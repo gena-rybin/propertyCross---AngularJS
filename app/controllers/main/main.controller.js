@@ -46,8 +46,11 @@ app.controller('mainCtrl', function ($scope,
                     return;
                     console.log('doesn"t have to see!');
                 }
-
+        console.log($scope);
                 $state.go('result', {item: $scope.inpName});
+            }).catch(function(error) {
+                console.log(error);
+                alert("Sorry, but site doesn't work! It's not your faut)");
             });
         }
 
@@ -73,5 +76,16 @@ app.controller('mainCtrl', function ($scope,
     function functionGoToFavesPage() {
         $state.go('favourite');
     }
+
+// // map
+//
+//     var map;
+//     function initMap() {
+//         map = new google.maps.Map(document.getElementById('map'), {
+//             center: {lat: -34.397, lng: 150.644},
+//             zoom: 8
+//         });
+//     }
+
 
 });

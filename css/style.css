@@ -20,3 +20,8 @@
     top: -30px;
     left: 5px;
 }
+
+#recent{
+    display: inline-block;
+    vertical-align:top;
+}
